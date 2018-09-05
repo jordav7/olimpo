@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <lec-sidebar></lec-sidebar>
+        <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-4.jpg)"></div>
+    </div>
+    <div class="main-panel">
+        <lec-navbar></lec-navbar>
+        <router-outlet></router-outlet>
+        <div *ngIf="isMaps('maps')">
+            <lec-footer></lec-footer>
+        </div>
+    </div>
+</div>
