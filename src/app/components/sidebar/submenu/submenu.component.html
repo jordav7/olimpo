@@ -1,0 +1,7 @@
+<li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+    <a class="nav-link" [routerLink]="[menuItem.path]" data-toggle="collapse" aria-expanded="true">
+        <i class="material-icons">{{menuItem.icon}}</i>
+        <p>{{menuItem.title}}</p>
+    </a>
+    <div class="collapse"></div>
+</li>
