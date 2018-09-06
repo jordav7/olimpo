@@ -6,34 +6,33 @@ import { trigger, style, transition, animate, state, group } from '@angular/anim
     selector: '[lec-submenu]',
     templateUrl: 'submenu.component.html',
     animations: [
-        trigger('slideInOut', [
-            state('in', style({ height: '*', opacity: 0 })),
-            transition(':leave', [
-              style({ height: '*', opacity: 0.2 }),
-              group([
-                animate(300, style({ height: 0 })),
-                animate('200ms ease-out', style({ opacity: 0 }))
-              ])
-            ]),
-            transition(':enter', [
-              style({ height: '0', opacity: 0 }),
-              group([
-                animate(200, style({ height: '*' })),
-                animate('400ms ease-out', style({ opacity: 1 }))
-              ])
+      trigger('slideInOut', [
+          state('in', style({ height: '*', opacity: 0 })),
+          transition(':leave', [
+            style({ height: '*', opacity: 0.2 }),
+            group([
+              animate(300, style({ height: 0 })),
+              animate('200ms ease-out', style({ opacity: 0 }))
             ])
           ]),
-          trigger('isExpanded', [
-            state('no', style({ transform: 'rotate(-90deg)' })),
-            state('yes', style({ transform: 'rotate(0deg)', })),
-            transition('no => yes',
-              animate(300)
-            ),
-            transition('yes => no',
-              animate(300)
-            )
-        ]
-    )
+          transition(':enter', [
+            style({ height: '0', opacity: 0 }),
+            group([
+              animate(200, style({ height: '*' })),
+              animate('400ms ease-out', style({ opacity: 1 }))
+            ])
+          ])
+        ]),
+      trigger('isExpanded', [
+        state('no', style({ transform: 'rotate(-90deg)' })),
+        state('yes', style({ transform: 'rotate(0deg)', })),
+        transition('no => yes',
+          animate(300)
+        ),
+        transition('yes => no',
+          animate(300)
+        )
+      ])
     ]
 })
 
