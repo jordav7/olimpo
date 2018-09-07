@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { trigger, style, transition, animate, state, group } from '@angular/animations';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: '[lec-submenu]',
+    selector: 'lec-submenu',
     templateUrl: 'submenu.component.html',
     animations: [
       trigger('slideInOut', [
@@ -36,8 +36,21 @@ import { trigger, style, transition, animate, state, group } from '@angular/anim
     ]
 })
 
-export class SubmenuComponent implements OnInit {
+export class SubmenuComponent implements OnChanges {
+
+    @Input()
+    menuItem: any;
+    children: any[];
+    expanded = false;
+
     constructor() { }
 
-    ngOnInit() { }
+    ngOnChanges() {
+      this.children = this.menuItem && this.menuItem.items ? this.menuItem.items : [];
+
+    }
+
+    hasItems(): boolean {
+      return this.children.length > 0;
+    }
 }
