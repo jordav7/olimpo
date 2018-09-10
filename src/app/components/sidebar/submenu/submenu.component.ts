@@ -12,20 +12,20 @@ import { trigger, style, transition, animate, state, group } from '@angular/anim
             style({ height: '*', opacity: 0.2 }),
             group([
               animate(300, style({ height: 0 })),
-              animate('200ms ease-out', style({ opacity: 0 }))
+              animate('400ms ease-out', style({ opacity: 0 }))
             ])
           ]),
           transition(':enter', [
             style({ height: '0', opacity: 0 }),
             group([
-              animate(200, style({ height: '*' })),
+              animate(300, style({ height: '*' })),
               animate('400ms ease-out', style({ opacity: 1 }))
             ])
           ])
         ]),
       trigger('isExpanded', [
-        state('no', style({ transform: 'rotate(-90deg)' })),
-        state('yes', style({ transform: 'rotate(0deg)', })),
+        state('no', style({ transform: 'rotate(0deg)' })),
+        state('yes', style({ transform: 'rotate(180deg)', })),
         transition('no => yes',
           animate(300)
         ),
@@ -47,7 +47,7 @@ export class SubmenuComponent implements OnChanges {
 
     ngOnChanges() {
       this.children = this.menuItem && this.menuItem.items ? this.menuItem.items : [];
-
+      console.log('Ingreso a cambio de propiedades');
     }
 
     expand(item: any) {

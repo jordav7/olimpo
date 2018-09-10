@@ -1,12 +1,16 @@
 <li routerLinkActive="active" class="{{menuItem.class}} nav-item">
-    <a class="nav-link" [routerLink]="[menuItem.path]" data-toggle="collapse" aria-expanded="true">
+    <a *ngIf='hasItems()' class="nav-link" (click)="expand(menuItem)" data-toggle="collapse" aria-expanded="true">
+        <i class="material-icons">{{menuItem.icon}}</i>
+        <p>
+            {{menuItem.title}}
+            <b class="caret" *ngIf='hasItems()' [@isExpanded]="hasItems() && expanded ? 'yes' : 'no'"></b>
+        </p>
+    </a>
+    <a *ngIf='!hasItems()' class="nav-link" [routerLink]="[menuItem.path]" data-toggle="collapse" aria-expanded="true">
         <i class="material-icons">{{menuItem.icon}}</i>
         <p>{{menuItem.title}}</p>
     </a>
-    <mat-icon *ngIf='hasItems()' [@isExpanded]="hasItems() && expanded ? 'yes' : 'no'">
-        keyboard_arrow_down
-    </mat-icon>
-    <div *ngIf="hasItems() && expanded" [@slideInOut] class="collapse">
+    <div *ngIf="hasItems() && expanded" [@slideInOut] class="collapse" [ngClass]="{'show': expanded}">
         <lec-submenu *ngFor="let item of children" [menuItem]="item"></lec-submenu>
     </div>
 </li>

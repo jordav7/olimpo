@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
 declare interface RouteInfo {
-    path: string;
+    path?: string;
     title: string;
     icon: string;
     class: string;
+    items?: any;
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
@@ -14,7 +15,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/typography', title: 'Typography',  icon: 'library_books', class: '' },
     { path: '/icons', title: 'Icons',  icon: 'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon: 'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon: 'notifications', class: '' },
+    { title: 'Notifications',  icon: 'notifications', class: '',
+        items: [{path: '/notifications', icon: 'add_alert', title: 'Notifications'}]
+    },
     { path: '/upgrade', title: 'Upgrade to PRO',  icon: 'unarchive', class: 'active-pro' },
 ];
 
