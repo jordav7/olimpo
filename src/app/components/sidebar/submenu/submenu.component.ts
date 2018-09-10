@@ -50,6 +50,10 @@ export class SubmenuComponent implements OnChanges {
 
     }
 
+    expand(item: any) {
+      this.expanded = !this.expanded;
+    }
+
     hasItems(): boolean {
       return this.children.length > 0;
     }
